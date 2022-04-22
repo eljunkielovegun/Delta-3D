@@ -192,24 +192,24 @@ scene.add(floor)
  * TONE STUFF
  */
 
- const synth = new Tone.Synth().toDestination();
- const synth2 = new Tone.Synth().toDestination();
- const synth3 = new Tone.Synth().toDestination();
- const ton1 = Tone.now()
- const ton2 = Tone.now()
- const ton3 = Tone.now()
- // trigger the attack immediately
- synth.triggerAttack("C4", ton1+1)
- // wait one second before triggering the release
-// synth.triggerRelease(now + 1)
+//  const synth = new Tone.Synth().toDestination();
+//  const synth2 = new Tone.Synth().toDestination();
+//  const synth3 = new Tone.Synth().toDestination();
+//  const ton1 = Tone.now()
+//  const ton2 = Tone.now()
+//  const ton3 = Tone.now()
+//  // trigger the attack immediately
+//  synth.triggerAttack("C4", ton1+1)
+//  // wait one second before triggering the release
+// // synth.triggerRelease(now + 1)
 
- synth2.triggerAttack("B3", ton2+2)
+//  synth2.triggerAttack("B3", ton2+2)
 
- synth3.triggerAttack("A3", ton3+3)
+//  synth3.triggerAttack("A3", ton3+3)
 
- var panner1 = new Tone.Panner3D(0,0,0);
- var panner2 = new Tone.Panner3D(0,0,0);
- var panner3 = new Tone.Panner3D(0,0,0);
+//  var panner1 = new Tone.Panner3D(0,0,0);
+//  var panner2 = new Tone.Panner3D(0,0,0);
+//  var panner3 = new Tone.Panner3D(0,0,0);
 
 /**
  * Lights
@@ -281,6 +281,7 @@ scene.add(camera)
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 
+
 /**
  * Renderer
  */
@@ -345,22 +346,22 @@ const tick = () =>
     ghost1.position.x = Math.cos(ghost1Angle) * 4
     ghost1.position.z = Math.sin(ghost1Angle) * 4
     ghost1.position.y = Math.sin(elapsedTime * 3)
-    panner1.setPosition(ghost1.position.x,ghost1.position.y, ghost1.position.z)
+    //panner1.setPosition(ghost1.position.x,ghost1.position.y, ghost1.position.z)
     
     const ghost2Angle = - (elapsedTime * 0.32)
     ghost2.position.x = Math.cos(ghost2Angle) * 5
     ghost2.position.z = Math.sin(ghost2Angle) * 5
     ghost2.position.y = Math.sin(elapsedTime * 4) + Math.sin(elapsedTime * 2.3)
-    panner2.setPosition(ghost2.position.x,ghost2.position.y, ghost2.position.z)
+   // panner2.setPosition(ghost2.position.x,ghost2.position.y, ghost2.position.z)
     
     const ghost3Angle = - (elapsedTime * 0.18)
     ghost3.position.x = Math.cos(ghost3Angle) * (7 + Math.sin(elapsedTime * .032))
     ghost3.position.z = Math.sin(ghost3Angle) * ( + Math.sin(elapsedTime * .07))
     ghost3.position.y = Math.sin(elapsedTime * 4) + Math.sin(elapsedTime * 2.5)
-    panner3.setPosition(ghost3.position.x,ghost3.position.y, ghost3.position.z)
+    //panner3.setPosition(ghost3.position.x,ghost3.position.y, ghost3.position.z)
     // Render
     renderer.render(scene, camera)
-
+    console.log(camera.getWorldPosition())
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
